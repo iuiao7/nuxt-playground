@@ -13,5 +13,9 @@ export default defineNuxtConfig({
     viewTransition: true,
   },
 
-  modules: ["nuxt-typed-router", "@nuxtjs/tailwindcss"],
+  modules: [
+    "nuxt-typed-router",
+    "@nuxtjs/tailwindcss",
+    "@nuxt/eslint",
+  ],
 });

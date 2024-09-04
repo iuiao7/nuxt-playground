@@ -5,10 +5,10 @@
     </header>
     <main class="content">
       <h1 class="content-title">Demo page</h1>
-      <div class="old-view" v-if="!showNew">
+      <div v-if="!showNew" class="old-view">
         <div class="view-text">Old</div>
       </div>
-      <div class="new-view" v-else>
+      <div v-else class="new-view">
         <div class="view-text">The new view</div>
       </div>
       <p><button class="toggle" @click="toggle">Toggle</button></p>

@@ -8,7 +8,7 @@
         <div class="ml-4">
           path: "<NuxtLink
             :to="route.path"
-            class="decoration-blue-700 underline"
+            class="decoration-blue-600 underline text-blue-600 hover:text-red-600 hover:decoration-red-600"
             >{{ route.path }}</NuxtLink
           >",
         </div>
