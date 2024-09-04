@@ -13,12 +13,14 @@
   },
   "dependencies": {
     "@nuxt/eslint": "^0.5.5",
-    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@unocss/reset": "^0.62.3",
     "nuxt": "^3.13.0",
     "nuxt-typed-router": "^3.6.5",
     "vue": "latest"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^1.4.1"
+    "@nuxt/devtools": "^1.4.1",
+    "@unocss/nuxt": "^0.62.3",
+    "unocss": "^0.62.3"
   }
 }

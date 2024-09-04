@@ -7,15 +7,11 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
-  css: ["~/assets/css/base-styles.css"],
+  css: ["@unocss/reset/tailwind-compat.css", "~/assets/css/base-styles.css"],
 
   experimental: {
     viewTransition: true,
   },
 
-  modules: [
-    "nuxt-typed-router",
-    "@nuxtjs/tailwindcss",
-    "@nuxt/eslint",
-  ],
+  modules: ["nuxt-typed-router", "@unocss/nuxt", "@nuxt/eslint"],
 });
