@@ -1,7 +1,7 @@
 <template>
-  <div class="font-mono">
+  <nav class="font-mono">
     <div>[</div>
-    <ul class="ml-4">
+    <ul class="ml-4 my-0">
       <li v-for="route of routes" :key="route.name">
         <div>{</div>
         <div class="ml-4">name: "{{ route.name }}"</div>
@@ -16,7 +16,7 @@
       </li>
     </ul>
     <div>]</div>
-  </div>
+  </nav>
 </template>
 
 <script setup lang="ts">
