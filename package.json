@@ -12,7 +12,6 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@nuxt/eslint": "^0.5.5",
     "@unocss/reset": "^0.62.3",
     "nuxt": "^3.13.0",
     "nuxt-typed-router": "^3.6.5",
@@ -20,7 +19,10 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.4.1",
+    "@nuxt/eslint": "^0.5.6",
     "@unocss/nuxt": "^0.62.3",
+    "eslint": "^9.10.0",
+    "typescript": "^5.6.2",
     "unocss": "^0.62.3"
   }
 }

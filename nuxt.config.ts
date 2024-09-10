@@ -10,7 +10,6 @@ export default defineNuxtConfig({
   css: [
     "@unocss/reset/sanitize/sanitize.css",
     "@unocss/reset/sanitize/assets.css",
-    "@unocss/reset/sanitize/forms.css",
     "~/assets/css/base-styles.css",
   ],
 
