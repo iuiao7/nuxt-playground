@@ -20,7 +20,7 @@
 const showNew = ref(false);
 
 function toggle() {
-  document.startViewTransition(async () => {
+  document.startViewTransition?.(async () => {
     showNew.value = !showNew.value;
     await nextTick();
   });
