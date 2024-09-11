@@ -1,7 +1,9 @@
 <template>
   <div class="grid h-[90dvh] place-items-center py-8 font-sans">
     <button
-      class="w-12 h-12 p-2 border-4 border-solid rounded-[100%] border-white cursor-pointer i-material-symbols-add-rounded?bg bg-[aliceblue] bg-center bg-[length:70%] hover:bg-[cornflowerblue]"
+      class="w-12 h-12 p-2 cursor-pointer i-ion-add-outline?bg"
+      border="4 solid white rounded-[100%]"
+      bg="[aliceblue] center [length:70%] hover:[cornflowerblue]"
       @click="addCard"
     >
       <span class="sr-only">Add</span>
@@ -23,7 +25,9 @@
         }"
       >
         <button
-          class="absolute right-[-0.75rem] bottom-[-0.75rem] w-12 h-12 p-2 border-4 border-solid border-white rounded-[100%] cursor-pointer i-material-symbols-delete-outline-rounded?bg bg-[aliceblue] bg-center bg-[length:70%] hover:bg-[orangered]"
+          class="absolute right-[-0.75rem] bottom-[-0.75rem] w-12 h-12 p-2 cursor-pointer i-ion-trash-outline?bg"
+          border="4 solid white rounded-[100%]"
+          bg="[aliceblue] center [length:70%] hover:[orangered]"
           @click="deleteCard(card.id)"
         >
           <span class="sr-only">Delete</span>

@@ -19,9 +19,9 @@ dependencies:
     version: 3.5.4(typescript@5.6.2)
 
 devDependencies:
-  '@iconify-json/material-symbols':
-    specifier: ^1.2.1
-    version: 1.2.1
+  '@iconify-json/ion':
+    specifier: ^1.2.0
+    version: 1.2.0
   '@nuxt/devtools':
     specifier: ^1.4.1
     version: 1.4.1(vite@5.4.3)
@@ -1105,8 +1105,8 @@ packages:
     resolution: {integrity: sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==}
     engines: {node: '>=18.18'}
 
-  /@iconify-json/material-symbols@1.2.1:
-    resolution: {integrity: sha512-r9yaBzlUmN87aCTSoCNtDCd7R9F0iVDjNPL9QHHhm1WglFJvTUKx9iBC5xcZpP0qN0bg9R5FkM90CndWxEBAnw==}
+  /@iconify-json/ion@1.2.0:
+    resolution: {integrity: sha512-uyFGINF59wOZDgXNkUTXTnzL2qeTfwbjP45JidRwhFK2JvFH9wyhXHz+TXqrG80PbQsNCqhIgGfwHmASWbutsg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
