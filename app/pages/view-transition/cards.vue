@@ -1,7 +1,7 @@
 <template>
   <div class="grid h-[90dvh] place-items-center py-8 font-sans">
     <button
-      class="add-btn w-12 h-12 p-2 border-4 border-solid rounded-[100%] border-white cursor-pointer"
+      class="w-12 h-12 p-2 border-4 border-solid rounded-[100%] border-white cursor-pointer i-material-symbols-add-rounded?bg bg-[aliceblue] bg-center bg-[length:70%] hover:bg-[cornflowerblue]"
       @click="addCard"
     >
       <span class="sr-only">Add</span>
@@ -23,7 +23,7 @@
         }"
       >
         <button
-          class="delete-btn absolute right-[-0.75rem] bottom-[-0.75rem] w-12 h-12 p-2 border-4 border-solid border-white rounded-[100%] cursor-pointer"
+          class="absolute right-[-0.75rem] bottom-[-0.75rem] w-12 h-12 p-2 border-4 border-solid border-white rounded-[100%] cursor-pointer i-material-symbols-delete-outline-rounded?bg bg-[aliceblue] bg-center bg-[length:70%] hover:bg-[orangered]"
           @click="deleteCard(card.id)"
         >
           <span class="sr-only">Delete</span>
@@ -215,24 +215,6 @@ function getRandomColor(): string {
 
     ::view-transition-old(targeted-card):only-child {
       animation: animate-out ease-out 0.5s;
-    }
-  }
-
-  .delete-btn {
-    --icon: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZS8+PHBhdGggZD0iTTExMiwxMTJsMjAsMzIwYy45NSwxOC40OSwxNC40LDMyLTMyLDMySDM0OGMxNy42NywwLDMwLjg3LTEzLjUxLDMyLTMybDIwLTMyMCIgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjMycHgiLz48bGluZSBzdHlsZT0ic3Ryb2tlOiMwMDA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjMycHgiIHgxPSI4MCIgeDI9IjQzMiIgeTE9IjExMiIgeTI9IjExMiIvPjxwYXRoIGQ9Ik0xOTIsMTEyVjcyaDBhMjMuOTMsMjMuOTMsMCwwLDEsMjQtMjRoODBhMjMuOTMsMjMuOTMsMCwwLDEsMjQsMjRoMHY0MCIgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjMycHgiLz48bGluZSBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MzJweCIgeDE9IjI1NiIgeDI9IjI1NiIgeTE9IjE3NiIgeTI9IjQwMCIvPjxsaW5lIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS13aWR0aDozMnB4IiB4MT0iMTg0IiB4Mj0iMTkyIiB5MT0iMTc2IiB5Mj0iNDAwIi8+PGxpbmUgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjMycHgiIHgxPSIzMjgiIHgyPSIzMjAiIHkxPSIxNzYiIHkyPSI0MDAiLz48L3N2Zz4=);
-    background: aliceblue var(--icon) no-repeat 50% 50% / 70%;
-
-    &:hover {
-      background-color: orangered;
-    }
-  }
-
-  .add-btn {
-    --icon: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZS8+PGxpbmUgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjMycHgiIHgxPSIyNTYiIHgyPSIyNTYiIHkxPSIxMTIiIHkyPSI0MDAiLz48bGluZSBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MzJweCIgeDE9IjQwMCIgeDI9IjExMiIgeTE9IjI1NiIgeTI9IjI1NiIvPjwvc3ZnPg==);
-    background: aliceblue var(--icon) no-repeat 50% 50% / 70%;
-
-    &:hover {
-      background-color: cornflowerblue;
     }
   }
 }
