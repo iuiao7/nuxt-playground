@@ -1,32 +1,42 @@
 <template>
   <div class="grid h-[90dvh] place-items-center py-8 font-sans">
-    <button class="add-btn" @click="addCard">
+    <button
+      class="add-btn w-12 h-12 p-2 border-4 border-solid rounded-[100%] border-white cursor-pointer"
+      @click="addCard"
+    >
       <span class="sr-only">Add</span>
     </button>
 
-    <ul class="cards">
+    <ul class="flex flex-wrap justify-center gap-8 w-full p-4">
       <li
         v-for="card in cards"
         :key="card.id"
-        class="card"
+        :ref="
+          (el) => {
+            if (el) cardRefs[card.id] = el as HTMLElement;
+          }
+        "
+        class="card w-full aspect-ratio-[2/3] block relative min-w-[100px] max-w-[220px] rounded-2xl bg-gray"
         :style="{
-          'view-transition-name': `card-${card.id}`,
           'background-color': card.color,
+          'view-transition-name': `card-${card.id}`,
         }"
       >
-        <button class="delete-btn" @click="deleteCard(card.id)">
+        <button
+          class="delete-btn absolute right-[-0.75rem] bottom-[-0.75rem] w-12 h-12 p-2 border-4 border-solid border-white rounded-[100%] cursor-pointer"
+          @click="deleteCard(card.id)"
+        >
           <span class="sr-only">Delete</span>
         </button>
       </li>
     </ul>
 
-    <footer>
+    <footer class="text-center font-italic line-height-[1.42]">
       <p>
         Icons from
         <a href="https://www.iconfinder.com/iconsets/ionicons-outline-vol-1"
           >Ionicons Outline Vol.1</a
-        >, licensed under the
-        <a href="https://opensource.org/license/MIT">MIT license</a>.
+        >, licensed under the <a href="https://opensource.org/license/MIT">MIT license</a>.
       </p>
     </footer>
   </div>
@@ -40,19 +50,53 @@ const cards = ref([
   { id: "4", color: "wheat" },
 ]);
 
-function addCard() {
+const cardRefs = ref<{ [key: string]: HTMLElement }>({});
+
+async function addCard() {
   const rand =
-    window.performance.now().toString().replace(".", "_") +
-    Math.floor(Math.random() * 1000);
-  document.startViewTransition?.(async () => {
-    cards.value.push({ id: rand, color: getRandomColor() });
+    window.performance.now().toString().replace(".", "_") + Math.floor(Math.random() * 1000);
+  const newCard = {
+    id: rand,
+    color: getRandomColor(),
+  };
+
+  if (!document.startViewTransition) {
+    cards.value.push(newCard);
+    return;
+  }
+
+  let newCardElement: HTMLElement | undefined;
+
+  const transition = document.startViewTransition(async () => {
+    cards.value.push(newCard);
+    await nextTick(() => {
+      newCardElement = cardRefs.value[newCard.id];
+      if (newCardElement) {
+        newCardElement.style.setProperty("view-transition-name", `targeted-card`);
+      }
+    });
     await nextTick();
   });
+
+  await transition.finished;
+  if (newCardElement) {
+    newCardElement.style.setProperty("view-transition-name", `card-${newCard.id}`);
+  }
 }
 
 function deleteCard(id: string) {
   const index = cards.value.findIndex((card) => card.id === id);
-  document.startViewTransition?.(async () => {
+
+  if (!document.startViewTransition) {
+    cards.value.splice(index, 1);
+    return;
+  }
+
+  const toBeDeletedCardElement = cardRefs.value[id];
+  if (toBeDeletedCardElement) {
+    toBeDeletedCardElement.style.setProperty("view-transition-name", `targeted-card`);
+  }
+  document.startViewTransition(async () => {
     cards.value.splice(index, 1);
     await nextTick();
   });
@@ -69,7 +113,7 @@ function getRandomColor(): string {
 </script>
 
 <style>
-@layer view-transitions {
+@layer view-transition {
   /* Don't capture the root, allowing pointer interaction while cards are animating */
   @layer no-root {
     :root {
@@ -173,45 +217,10 @@ function getRandomColor(): string {
       animation: animate-out ease-out 0.5s;
     }
   }
-}
-
-/* Etc. */
-@layer base {
-  .cards {
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    gap: 2rem;
-    padding: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .card {
-    width: 100%;
-    aspect-ratio: 2/3;
-    display: block;
-    position: relative;
-    border-radius: 1rem;
-    max-width: 220px;
-    min-width: 100px;
-
-    background-color: grey;
-  }
 
   .delete-btn {
     --icon: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZS8+PHBhdGggZD0iTTExMiwxMTJsMjAsMzIwYy45NSwxOC40OSwxNC40LDMyLTMyLDMySDM0OGMxNy42NywwLDMwLjg3LTEzLjUxLDMyLTMybDIwLTMyMCIgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjMycHgiLz48bGluZSBzdHlsZT0ic3Ryb2tlOiMwMDA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjMycHgiIHgxPSI4MCIgeDI9IjQzMiIgeTE9IjExMiIgeTI9IjExMiIvPjxwYXRoIGQ9Ik0xOTIsMTEyVjcyaDBhMjMuOTMsMjMuOTMsMCwwLDEsMjQtMjRoODBhMjMuOTMsMjMuOTMsMCwwLDEsMjQsMjRoMHY0MCIgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjMycHgiLz48bGluZSBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MzJweCIgeDE9IjI1NiIgeDI9IjI1NiIgeTE9IjE3NiIgeTI9IjQwMCIvPjxsaW5lIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS13aWR0aDozMnB4IiB4MT0iMTg0IiB4Mj0iMTkyIiB5MT0iMTc2IiB5Mj0iNDAwIi8+PGxpbmUgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjMycHgiIHgxPSIzMjgiIHgyPSIzMjAiIHkxPSIxNzYiIHkyPSI0MDAiLz48L3N2Zz4=);
-    position: absolute;
-    bottom: -0.75rem;
-    right: -0.75rem;
-    width: 3rem;
-    height: 3rem;
-    padding: 0.5rem;
-    border: 4px solid;
-    border-radius: 100%;
     background: aliceblue var(--icon) no-repeat 50% 50% / 70%;
-    color: white;
-    cursor: pointer;
 
     &:hover {
       background-color: orangered;
@@ -220,24 +229,11 @@ function getRandomColor(): string {
 
   .add-btn {
     --icon: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZS8+PGxpbmUgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjMycHgiIHgxPSIyNTYiIHgyPSIyNTYiIHkxPSIxMTIiIHkyPSI0MDAiLz48bGluZSBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MzJweCIgeDE9IjQwMCIgeDI9IjExMiIgeTE9IjI1NiIgeTI9IjI1NiIvPjwvc3ZnPg==);
-    width: 3rem;
-    height: 3rem;
-    padding: 0.5rem;
-    border: 4px solid;
-    border-radius: 100%;
     background: aliceblue var(--icon) no-repeat 50% 50% / 70%;
-    color: white;
-    cursor: pointer;
 
     &:hover {
       background-color: cornflowerblue;
     }
-  }
-
-  footer {
-    text-align: center;
-    font-style: italic;
-    line-height: 1.42;
   }
 }
 </style>
