@@ -56,6 +56,14 @@ const cards = ref([
 
 const cardRefs = ref<{ [key: string]: HTMLElement }>({});
 
+onMounted(() => {
+  document.documentElement.style.setProperty("view-transition-name", "none");
+});
+
+onBeforeUnmount(() => {
+  document.documentElement.style.setProperty("view-transition-name", "root");
+});
+
 async function addCard() {
   const rand =
     window.performance.now().toString().replace(".", "_") + Math.floor(Math.random() * 1000);
@@ -120,9 +128,9 @@ function getRandomColor(): string {
 @layer view-transition {
   /* Don't capture the root, allowing pointer interaction while cards are animating */
   @layer no-root {
-    :root {
+    /* :root {
       view-transition-name: none;
-    }
+    } */
     ::view-transition {
       pointer-events: none;
     }
