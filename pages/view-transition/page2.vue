@@ -1,3 +1,5 @@
+<script lang="ts" setup></script>
+
 <template>
   <div>
     <header class="main-header">
@@ -9,7 +11,9 @@
       </NuxtLink>
     </header>
     <main class="content">
-      <h1 class="content-title">Page 2</h1>
+      <h1 class="content-title">
+        Page 2
+      </h1>
       <p>This is the content for page 2.</p>
       <ol>
         <li>It</li>
@@ -20,12 +24,12 @@
       </ol>
       <p>
         Ok, that's enough fun, you can go back to
-        <NuxtLink to="/view-transition/page1"> page 1 </NuxtLink>.
+        <NuxtLink to="/view-transition/page1">
+          page 1
+        </NuxtLink>.
       </p>
     </main>
   </div>
 </template>
-
-<script lang="ts" setup></script>
 
 <style></style>

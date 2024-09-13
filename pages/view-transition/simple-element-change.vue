@@ -1,21 +1,3 @@
-<template>
-  <div>
-    <header class="main-header">
-      <span class="main-header-text">Demo site</span>
-    </header>
-    <main class="content">
-      <h1 class="content-title">Demo page</h1>
-      <div v-if="!showNew" class="old-view">
-        <div class="view-text">Old</div>
-      </div>
-      <div v-else class="new-view">
-        <div class="view-text">The new view</div>
-      </div>
-      <p><button class="toggle" @click="toggle">Toggle</button></p>
-    </main>
-  </div>
-</template>
-
 <script lang="ts" setup>
 const showNew = ref(false);
 
@@ -26,6 +8,34 @@ function toggle() {
   });
 }
 </script>
+
+<template>
+  <div>
+    <header class="main-header">
+      <span class="main-header-text">Demo site</span>
+    </header>
+    <main class="content">
+      <h1 class="content-title">
+        Demo page
+      </h1>
+      <div v-if="!showNew" class="old-view">
+        <div class="view-text">
+          Old
+        </div>
+      </div>
+      <div v-else class="new-view">
+        <div class="view-text">
+          The new view
+        </div>
+      </div>
+      <p>
+        <button class="toggle" @click="toggle">
+          Toggle
+        </button>
+      </p>
+    </main>
+  </div>
+</template>
 
 <style>
 .old-view,

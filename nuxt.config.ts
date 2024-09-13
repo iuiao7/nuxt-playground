@@ -18,4 +18,10 @@ export default defineNuxtConfig({
   devServer: {
     port: 5173,
   },
+
+  eslint: {
+    config: {
+      standalone: false,
+    },
+  },
 });
