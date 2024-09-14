@@ -21,4 +21,5 @@ export default defineConfig({
       ],
     },
   },
+  rules: [[/^view-transition-name-\[(.+)\]$/, ([, name]) => ({ "view-transition-name": name })]],
 });
