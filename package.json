@@ -13,8 +13,14 @@
   },
   "dependencies": {
     "@unocss/reset": "^0.62.3",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.441.0",
     "nuxt": "^3.13.0",
     "nuxt-typed-router": "^3.6.5",
+    "radix-vue": "^1.9.5",
+    "shadcn-nuxt": "^0.10.4",
+    "tailwind-merge": "^2.5.2",
     "vue": "latest"
   },
   "devDependencies": {
@@ -26,6 +32,8 @@
     "@unocss/nuxt": "^0.62.3",
     "eslint": "^9.10.0",
     "typescript": "^5.6.2",
-    "unocss": "^0.62.3"
+    "unocss": "^0.62.3",
+    "unocss-preset-animations": "^1.1.0",
+    "unocss-preset-shadcn": "^0.3.1"
   }
 }
