@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const router = useRouter();
-const routes = router.options.routes;
+const router = useRouter()
+const routes = router.options.routes
 </script>
 
 <template>

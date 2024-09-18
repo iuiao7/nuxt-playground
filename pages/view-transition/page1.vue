@@ -6,7 +6,9 @@
       Demo site
     </header>
     <main class="p-[1.2rem]">
-      <h1 class="m-0 max-w-[43ch]" font="size-[1.6rem] 600">Page 1</h1>
+      <h1 class="m-0 max-w-[43ch]" font="size-[1.6rem] 600">
+        Page 1
+      </h1>
       <p>This is the content for page 1.</p>
       <p>
         Why not check out
@@ -15,8 +17,8 @@
           class="text-blue-600 hover:text-red-600"
           decoration="underline blue-600 hover:red-600"
         >
-          page 2 </NuxtLink
-        >?
+          page 2
+        </NuxtLink>?
       </p>
     </main>
   </div>

@@ -1,78 +1,77 @@
 <script lang="ts" setup>
 const cards = ref([
-  { id: "1", color: "tan" },
-  { id: "2", color: "khaki" },
-  { id: "3", color: "thistle" },
-  { id: "4", color: "wheat" },
-]);
+  { id: '1', color: 'tan' },
+  { id: '2', color: 'khaki' },
+  { id: '3', color: 'thistle' },
+  { id: '4', color: 'wheat' },
+])
 
-const cardRefs = ref<{ [key: string]: HTMLElement }>({});
+const cardRefs = ref<{ [key: string]: HTMLElement }>({})
 
 onMounted(() => {
-  document.documentElement.style.setProperty("view-transition-name", "none");
-});
+  document.documentElement.style.setProperty('view-transition-name', 'none')
+})
 
 onBeforeUnmount(() => {
-  document.documentElement.style.setProperty("view-transition-name", "root");
-});
+  document.documentElement.style.setProperty('view-transition-name', 'root')
+})
 
 async function addCard() {
-  const rand =
-    window.performance.now().toString().replace(".", "_") + Math.floor(Math.random() * 1000);
+  const rand = window.performance.now().toString().replace('.', '_') + Math.floor(Math.random() * 1000)
   const newCard = {
     id: rand,
     color: getRandomColor(),
-  };
-
-  if (!document.startViewTransition) {
-    cards.value.push(newCard);
-    return;
   }
 
-  let newCardElement: HTMLElement | undefined;
+  if (!document.startViewTransition) {
+    cards.value.push(newCard)
+    return
+  }
+
+  let newCardElement: HTMLElement | undefined
 
   const transition = document.startViewTransition(async () => {
-    cards.value.push(newCard);
+    cards.value.push(newCard)
     await nextTick(() => {
-      newCardElement = cardRefs.value[newCard.id];
+      newCardElement = cardRefs.value[newCard.id]
       if (newCardElement) {
-        newCardElement.style.setProperty("view-transition-name", `targeted-card`);
+        newCardElement.style.setProperty('view-transition-name', `targeted-card`)
       }
-    });
-    await nextTick();
-  });
+    })
+    await nextTick()
+  })
 
-  await transition.finished;
+  await transition.finished
   if (newCardElement) {
-    newCardElement.style.setProperty("view-transition-name", `card-${newCard.id}`);
+    newCardElement.style.setProperty('view-transition-name', `card-${newCard.id}`)
   }
 }
 
 function deleteCard(id: string) {
-  const index = cards.value.findIndex((card) => card.id === id);
+  const index = cards.value.findIndex(card => card.id === id)
 
   if (!document.startViewTransition) {
-    cards.value.splice(index, 1);
-    return;
+    cards.value.splice(index, 1)
+    return
   }
 
-  const toBeDeletedCardElement = cardRefs.value[id];
+  const toBeDeletedCardElement = cardRefs.value[id]
   if (toBeDeletedCardElement) {
-    toBeDeletedCardElement.style.setProperty("view-transition-name", `targeted-card`);
+    toBeDeletedCardElement.style.setProperty('view-transition-name', `targeted-card`)
   }
   document.startViewTransition(async () => {
-    cards.value.splice(index, 1);
-    await nextTick();
-  });
+    cards.value.splice(index, 1)
+    await nextTick()
+  })
 }
 
 function getRandomColor(): string {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
+  const letters = '0123456789ABCDEF'
+  let color = '#'
   for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+    color += letters[Math.floor(Math.random() * 16)]
   }
-  return color;
+  return color
 }
 </script>
 
@@ -93,7 +92,7 @@ function getRandomColor(): string {
         :key="card.id"
         :ref="
           (el) => {
-            if (el) cardRefs[card.id] = el as HTMLElement;
+            if (el) cardRefs[card.id] = el as HTMLElement
           }
         "
         class="card relative block aspect-ratio-[2/3] max-w-[220px] min-w-[100px] w-full rounded-2xl bg-gray"
@@ -116,7 +115,8 @@ function getRandomColor(): string {
     <footer class="text-center line-height-[1.42] font-italic">
       <p>
         Icons from
-        <a href="https://www.iconfinder.com/iconsets/ionicons-outline-vol-1">Ionicons Outline Vol.1</a>, licensed under the <a href="https://opensource.org/license/MIT">MIT license</a>.
+        <a href="https://www.iconfinder.com/iconsets/ionicons-outline-vol-1">Ionicons Outline Vol.1</a>, licensed under
+        the <a href="https://opensource.org/license/MIT">MIT license</a>.
       </p>
     </footer>
   </div>

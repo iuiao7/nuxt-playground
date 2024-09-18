@@ -15,7 +15,9 @@
       </NuxtLink>
     </header>
     <main class="p-[1.2rem]">
-      <h1 class="m-0 max-w-[43ch]" font="size-[1.6rem] 600">Page 2</h1>
+      <h1 class="m-0 max-w-[43ch]" font="size-[1.6rem] 600">
+        Page 2
+      </h1>
       <p>This is the content for page 2.</p>
       <ol>
         <li>It</li>
@@ -31,8 +33,8 @@
           class="text-blue-600 hover:text-red-600"
           decoration="underline blue-600 hover:red-600"
         >
-          page 1 </NuxtLink
-        >.
+          page 1
+        </NuxtLink>.
       </p>
     </main>
   </div>

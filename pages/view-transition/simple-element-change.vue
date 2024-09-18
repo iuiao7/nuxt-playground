@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-const showNew = ref(false);
+const showNew = ref(false)
 
 function toggle() {
   document.startViewTransition?.(async () => {
-    showNew.value = !showNew.value;
-    await nextTick();
-  });
+    showNew.value = !showNew.value
+    await nextTick()
+  })
 }
 </script>
 
@@ -15,23 +15,31 @@ function toggle() {
       <span>Demo site</span>
     </header>
     <main class="p-[1.2rem]">
-      <h1 class="m-0 max-w-[43ch]" font="size-[1.6rem] 600">Demo page</h1>
+      <h1 class="m-0 max-w-[43ch]" font="size-[1.6rem] 600">
+        Demo page
+      </h1>
       <div
         v-if="!showNew"
-        class="view-transition-name-[box] contain-layout w-fit rounded-[15px] bg-green p-[20px_35px]"
+        class="contain-layout w-fit rounded-[15px] bg-green p-[20px_35px] view-transition-name-[box]"
         text="[30px] white"
       >
-        <div class="view-transition-name-[box-text] contain-layout">Old</div>
+        <div class="contain-layout view-transition-name-[box-text]">
+          Old
+        </div>
       </div>
       <div
         v-else
         class="contain-layout fixed right-[20px] top-[20px] w-fit rounded-[15px] bg-[#38e8da] p-[20px_50px] view-transition-name-box"
         text="[30px] black"
       >
-        <div class="view-transition-name-[box-text] contain-layout">The new view</div>
+        <div class="contain-layout view-transition-name-[box-text]">
+          The new view
+        </div>
       </div>
       <p>
-        <Button @click="toggle"> Toggle </Button>
+        <Button @click="toggle">
+          Toggle
+        </Button>
       </p>
     </main>
   </div>
