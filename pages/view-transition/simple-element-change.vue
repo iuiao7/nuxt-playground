@@ -37,9 +37,9 @@ function toggle() {
         </div>
       </div>
       <p>
-        <Button @click="toggle">
+        <UiButton @click="toggle">
           Toggle
-        </Button>
+        </UiButton>
       </p>
     </main>
   </div>

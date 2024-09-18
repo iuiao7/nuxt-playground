@@ -20,4 +20,8 @@ export default defineNuxtConfig({
       standalone: false,
     },
   },
+
+  shadcn: {
+    prefix: 'ui',
+  },
 })
