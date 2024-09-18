@@ -9,7 +9,14 @@ export default defineNuxtConfig({
     viewTransition: true,
   },
 
-  modules: ['nuxt-typed-router', '@unocss/nuxt', '@nuxt/eslint', 'shadcn-nuxt'],
+  modules: [
+    'nuxt-typed-router',
+    '@unocss/nuxt',
+    '@nuxt/eslint',
+    'shadcn-nuxt',
+    '@nuxt/icon',
+    '@nuxt/image',
+  ],
 
   devServer: {
     port: 5173,
@@ -19,5 +26,9 @@ export default defineNuxtConfig({
     config: {
       standalone: false,
     },
+  },
+
+  shadcn: {
+    prefix: 'ui',
   },
 })
