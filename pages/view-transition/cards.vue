@@ -78,7 +78,7 @@ function getRandomColor(): string {
 <template>
   <div class="grid h-[90dvh] place-items-center py-8 font-sans">
     <button
-      class="i-ion-add-outline?bg h-12 w-12 cursor-pointer p-2"
+      class="i-lucide:plus?bg h-12 w-12 cursor-pointer p-2"
       border="4 solid white rounded-[100%]"
       bg="[aliceblue] center [length:70%] hover:[cornflowerblue]"
       @click="addCard"
@@ -102,7 +102,7 @@ function getRandomColor(): string {
         }"
       >
         <button
-          class="i-ion-trash-outline?bg absolute bottom-[-0.75rem] right-[-0.75rem] h-12 w-12 cursor-pointer p-2"
+          class="i-lucide:trash-2?bg absolute bottom-[-0.75rem] right-[-0.75rem] h-12 w-12 cursor-pointer p-2"
           border="4 solid white rounded-[100%]"
           bg="[aliceblue] center [length:70%] hover:[orangered]"
           @click="deleteCard(card.id)"
