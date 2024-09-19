@@ -1,5 +1,3 @@
-<script lang="ts" setup></script>
-
 <template>
   <div>
     <header class="contain-paint grid h-[54px] items-center bg-[#673ab7] px-[1.2rem] color-white">
@@ -23,5 +21,7 @@
     </main>
   </div>
 </template>
+
+<script lang="ts" setup></script>
 
 <style></style>

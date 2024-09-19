@@ -1,3 +1,50 @@
+<template>
+  <div class="grid h-[90dvh] place-items-center py-8 font-sans">
+    <button
+      class="i-lucide:plus?bg h-12 w-12 cursor-pointer p-2"
+      border="4 solid white rounded-[100%]"
+      bg="[aliceblue] center [length:70%] hover:[cornflowerblue]"
+      @click="addCard"
+    >
+      <span class="sr-only">Add</span>
+    </button>
+
+    <ul class="w-full flex flex-wrap justify-center gap-8 p-4">
+      <li
+        v-for="card in cards"
+        :key="card.id"
+        :ref="
+          (el) => {
+            if (el) cardRefs[card.id] = el as HTMLElement
+          }
+        "
+        class="card relative block aspect-ratio-[2/3] max-w-[220px] min-w-[100px] w-full rounded-2xl bg-gray"
+        :style="{
+          'background-color': card.color,
+          'view-transition-name': `card-${card.id}`,
+        }"
+      >
+        <button
+          class="i-lucide:trash-2?bg absolute bottom-[-0.75rem] right-[-0.75rem] h-12 w-12 cursor-pointer p-2"
+          border="4 solid white rounded-[100%]"
+          bg="[aliceblue] center [length:70%] hover:[orangered]"
+          @click="deleteCard(card.id)"
+        >
+          <span class="sr-only">Delete</span>
+        </button>
+      </li>
+    </ul>
+
+    <footer class="text-center line-height-[1.42] font-italic">
+      <p>
+        Icons from
+        <a href="https://www.iconfinder.com/iconsets/ionicons-outline-vol-1">Ionicons Outline Vol.1</a>, licensed under
+        the <a href="https://opensource.org/license/MIT">MIT license</a>.
+      </p>
+    </footer>
+  </div>
+</template>
+
 <script lang="ts" setup>
 const cards = ref([
   { id: '1', color: 'tan' },
@@ -74,53 +121,6 @@ function getRandomColor(): string {
   return color
 }
 </script>
-
-<template>
-  <div class="grid h-[90dvh] place-items-center py-8 font-sans">
-    <button
-      class="i-lucide:plus?bg h-12 w-12 cursor-pointer p-2"
-      border="4 solid white rounded-[100%]"
-      bg="[aliceblue] center [length:70%] hover:[cornflowerblue]"
-      @click="addCard"
-    >
-      <span class="sr-only">Add</span>
-    </button>
-
-    <ul class="w-full flex flex-wrap justify-center gap-8 p-4">
-      <li
-        v-for="card in cards"
-        :key="card.id"
-        :ref="
-          (el) => {
-            if (el) cardRefs[card.id] = el as HTMLElement
-          }
-        "
-        class="card relative block aspect-ratio-[2/3] max-w-[220px] min-w-[100px] w-full rounded-2xl bg-gray"
-        :style="{
-          'background-color': card.color,
-          'view-transition-name': `card-${card.id}`,
-        }"
-      >
-        <button
-          class="i-lucide:trash-2?bg absolute bottom-[-0.75rem] right-[-0.75rem] h-12 w-12 cursor-pointer p-2"
-          border="4 solid white rounded-[100%]"
-          bg="[aliceblue] center [length:70%] hover:[orangered]"
-          @click="deleteCard(card.id)"
-        >
-          <span class="sr-only">Delete</span>
-        </button>
-      </li>
-    </ul>
-
-    <footer class="text-center line-height-[1.42] font-italic">
-      <p>
-        Icons from
-        <a href="https://www.iconfinder.com/iconsets/ionicons-outline-vol-1">Ionicons Outline Vol.1</a>, licensed under
-        the <a href="https://opensource.org/license/MIT">MIT license</a>.
-      </p>
-    </footer>
-  </div>
-</template>
 
 <style>
 @layer view-transition {

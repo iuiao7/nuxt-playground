@@ -1,8 +1,3 @@
-<script setup lang="ts">
-const router = useRouter()
-const routes = router.options.routes
-</script>
-
 <template>
   <nav class="font-mono">
     <div>[</div>
@@ -31,5 +26,10 @@ const routes = router.options.routes
     <div>]</div>
   </nav>
 </template>
+
+<script setup lang="ts">
+const router = useRouter()
+const routes = router.options.routes
+</script>
 
 <style scoped></style>
