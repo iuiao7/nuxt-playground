@@ -1,3 +1,17 @@
+<template>
+  <NavigationMenuTrigger
+    v-bind="forwardedProps"
+    :class="cn(navigationMenuTriggerStyle(), 'group', props.class)"
+  >
+    <slot />
+    <Icon
+      name="lucide:chevron-down"
+      class="relative top-px ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
+      aria-hidden="true"
+    />
+  </NavigationMenuTrigger>
+</template>
+
 <script setup lang="ts">
 import {
   NavigationMenuTrigger,
@@ -18,17 +32,3 @@ const delegatedProps = computed(() => {
 
 const forwardedProps = useForwardProps(delegatedProps)
 </script>
-
-<template>
-  <NavigationMenuTrigger
-    v-bind="forwardedProps"
-    :class="cn(navigationMenuTriggerStyle(), 'group', props.class)"
-  >
-    <slot />
-    <Icon
-      name="lucide:chevron-down"
-      class="relative top-px ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
-      aria-hidden="true"
-    />
-  </NavigationMenuTrigger>
-</template>

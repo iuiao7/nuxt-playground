@@ -1,7 +1,3 @@
-<script setup lang="ts">
-const config = useConfig()
-</script>
-
 <template>
   <header
     class="sticky top-0 z-40 bg-background/80 backdrop-blur-lg"
@@ -34,3 +30,7 @@ const config = useConfig()
     </div>
   </header>
 </template>
+
+<script setup lang="ts">
+const config = useConfig()
+</script>

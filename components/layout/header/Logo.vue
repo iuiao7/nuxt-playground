@@ -1,7 +1,3 @@
-<script setup lang="ts">
-const { logo, title, showTitle } = useConfig().value.header
-</script>
-
 <template>
   <div>
     <NuxtLink v-if="logo.light && logo.dark" to="/" class="flex">
@@ -13,3 +9,7 @@ const { logo, title, showTitle } = useConfig().value.header
     </NuxtLink>
   </div>
 </template>
+
+<script setup lang="ts">
+const { logo, title, showTitle } = useConfig().value.header
+</script>

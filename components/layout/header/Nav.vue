@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu'
-
-const { nav } = useConfig().value.header
-</script>
-
 <template>
   <UiNavigationMenu>
     <UiNavigationMenuList>
@@ -41,3 +35,9 @@ const { nav } = useConfig().value.header
     </UiNavigationMenuList>
   </UiNavigationMenu>
 </template>
+
+<script setup lang="ts">
+import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu'
+
+const { nav } = useConfig().value.header
+</script>

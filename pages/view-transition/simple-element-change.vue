@@ -1,14 +1,3 @@
-<script lang="ts" setup>
-const showNew = ref(false)
-
-function toggle() {
-  document.startViewTransition?.(async () => {
-    showNew.value = !showNew.value
-    await nextTick()
-  })
-}
-</script>
-
 <template>
   <div>
     <header class="contain-paint grid h-[54px] items-center bg-[#673ab7] px-[1.2rem] color-white">
@@ -44,6 +33,17 @@ function toggle() {
     </main>
   </div>
 </template>
+
+<script lang="ts" setup>
+const showNew = ref(false)
+
+function toggle() {
+  document.startViewTransition?.(async () => {
+    showNew.value = !showNew.value
+    await nextTick()
+  })
+}
+</script>
 
 <style>
 /* ::view-transition-group(*),
