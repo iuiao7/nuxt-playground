@@ -12,6 +12,8 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@nuxt/icon": "^1.5.1",
+    "@nuxt/image": "^1.8.0",
     "@unocss/reset": "^0.62.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -26,6 +28,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^3.6.0",
     "@iconify-json/ion": "^1.2.0",
+    "@iconify-json/lucide": "^1.2.4",
     "@nuxt/devtools": "^1.4.1",
     "@nuxt/eslint": "^0.5.6",
     "@unocss/eslint-plugin": "^0.62.3",

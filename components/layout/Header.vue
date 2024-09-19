@@ -12,13 +12,13 @@ const config = useConfig()
       :class="{ 'border-b lg:border-none': config.header.border, 'container max-w-screen-2xl': config.main.padded }"
     >
       <LayoutHeaderLogo class="hidden flex-1 md:flex" />
-      <LayoutMobileNav />
-      <LayoutHeaderLogo v-if="config.header.showTitleInMobile" class="flex md:hidden" />
+      <!-- <LayoutMobileNav />
+      <LayoutHeaderLogo v-if="config.header.showTitleInMobile" class="flex md:hidden" /> -->
       <LayoutHeaderNav class="hidden flex-1 lg:flex" />
       <div class="flex flex-1 justify-end gap-2">
         <div class="flex">
-          <ThemePopover v-if="config.theme.customizable" />
-          <DarkModeToggle v-if="config.header.darkModeToggle" />
+          <!-- <ThemePopover v-if="config.theme.customizable" /> -->
+          <!-- <DarkModeToggle v-if="config.header.darkModeToggle" /> -->
           <NuxtLink
             v-for="(link, i) in config.header.links"
             :key="i"

@@ -1,3 +1,5 @@
+import { defu } from 'defu'
+
 const defaultConfig: DefaultConfig = {
   theme: {
     customizable: true,
@@ -37,5 +39,13 @@ const defaultConfig: DefaultConfig = {
 }
 
 export function useConfig() {
-  return defaultConfig
+  const appConfig = computed(() => useAppConfig().nuxtPlayground || {})
+
+  return computed(() => {
+    const processedConfig = defu(appConfig.value, defaultConfig)
+
+    return {
+      ...processedConfig,
+    }
+  })
 }
