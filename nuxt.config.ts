@@ -7,10 +7,10 @@ export default defineNuxtConfig({
 
   experimental: {
     viewTransition: true,
+    typedPages: true,
   },
 
   modules: [
-    'nuxt-typed-router',
     '@unocss/nuxt',
     '@nuxt/eslint',
     'shadcn-nuxt',
