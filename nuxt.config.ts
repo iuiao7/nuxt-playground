@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     '@nuxt/icon',
     '@nuxt/image',
+    '@nuxt/content',
   ],
 
   devServer: {
@@ -30,5 +31,11 @@ export default defineNuxtConfig({
 
   shadcn: {
     prefix: 'ui',
+  },
+
+  content: {
+    documentDriven: {
+      injectPage: false,
+    },
   },
 })
