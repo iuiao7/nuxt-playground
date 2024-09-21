@@ -36,10 +36,6 @@ export default defineAppConfig({
           description: 'Content made easy for Vue Developers',
           target: '_blank',
         }],
-      }, {
-        title: 'Use This Template',
-        to: '/getting-started/installation',
-        target: '_self',
       }],
       links: [{
         icon: 'lucide:github',

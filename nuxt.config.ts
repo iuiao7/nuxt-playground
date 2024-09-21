@@ -34,8 +34,6 @@ export default defineNuxtConfig({
   },
 
   content: {
-    documentDriven: {
-      injectPage: false,
-    },
+
   },
 })
