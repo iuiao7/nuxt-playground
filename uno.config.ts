@@ -7,8 +7,8 @@ export default defineConfig({
   // ...UnoCSS options
   presets: [presetUno(), presetIcons(), presetAttributify(), presetAnimations(), presetShadcn()],
   theme: {
-    fontFamily: {
-      mono: 'Operator Mono Lig, Operator Mono, JetBrains Mono, Monolisa, Monaco, Consolas, monospace',
+    container: {
+      center: true,
     },
   },
   content: {
